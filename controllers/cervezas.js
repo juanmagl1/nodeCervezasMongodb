@@ -15,9 +15,9 @@ async function getBeers(req, res) {
     res.json(cervezas)
 }
 
-function getBeer(req = request, res = response) {
+async function getBeer(req = request, res = response) {
     const id = req.params.id
-    const beers = db.cervezas.find({ _id: id });
+    const beers = await Cerveza.find({ _id: id });
     if (beers.length) {
         res.json(beers);
     } else {
@@ -42,16 +42,16 @@ async function addBeer(req = request, res = response) {
     });
 }
 
-function deleteBeer(req = request, res = response) {
+async function deleteBeer(req = request, res = response) {
     const beerId = req.params.id;
-    const removed = db.cervezas.remove({ _id: beerId });
+    const removed = await Cerveza.deleteOne({ _id: beerId });
     res.json(removed);
 }
 
-function editBeer(req = request, res = response) {
+async function editBeer(req = request, res = response) {
     const beerId = req.params.id;
     const beer = req.body;
-    const updatedBeer = db.cervezas.update({ _id: beerId }, beer);
+    const updatedBeer = await Cerveza.updateOne({ _id: beerId }, beer);
 
     res.json(updatedBeer);
 }
