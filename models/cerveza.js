@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-
 const CervezaSchema = Schema({
     Nombre: {
         type: String,
@@ -22,6 +21,8 @@ const CervezaSchema = Schema({
         type: String,
         required: true
     },
+        
+    
 });
 
 

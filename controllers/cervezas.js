@@ -1,6 +1,7 @@
 const db = require('../models/db')
 const { response, request } = require('express');
 const Cerveza = require('../models/cerveza');
+
 async function getBeers(req, res) {
     const {Nombre, Envase} = req.query
     const query = {Nombre, Envase}
